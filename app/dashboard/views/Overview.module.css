@@ -1,0 +1,24 @@
+.overview { max-width: 1280px; margin-inline: auto; display: flex; flex-direction: column; gap: 1.75rem; animation: fadeUp .4s ease both; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.metric { display: flex; flex-direction: column; align-items: flex-start; padding: 1.4rem; border-radius: var(--radius-lg); background: var(--color-surface-card); border: 1px solid var(--color-surface-border); box-shadow: var(--shadow-sm); transition: box-shadow var(--transition-fast), border-color var(--transition-fast); }
+.metric:hover { border-color: var(--color-brand-border); box-shadow: var(--shadow-md); }
+.metricTop { display: flex; align-items: center; justify-content: space-between; width: 100%; color: var(--color-text-muted); margin-bottom: .9rem; }
+.metricIcon { display: inline-flex; padding: .6rem; border-radius: var(--radius-md); color: var(--color-brand); background: var(--color-brand-glow); }
+.metricLabel { font-size: .76rem; font-weight: 500; color: var(--color-text-secondary); }
+.metricValue { font-family: var(--font-brand); font-size: 2.2rem; letter-spacing: -.05em; line-height: 1.4; font-weight: 700; }
+.metricDetail { color: var(--color-text-muted); font-size: .62rem; margin-top: .4rem; }
+.panels { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.5rem; }
+.panels > section { min-width: 0; }
+.sectionHeader { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .9rem; }
+.sectionHeader h2 { font-size: .92rem; font-weight: 700; letter-spacing: -.02em; }
+.sectionHeader > a { display: flex; align-items: center; gap: .35rem; font-size: .67rem; color: var(--color-brand); }
+.shortcuts { background: var(--color-surface-card); border: 1px solid var(--color-surface-border); border-radius: var(--radius-lg); overflow: hidden; }
+.shortcut { display: flex; align-items: center; gap: .85rem; padding: 1.2rem; transition: background var(--transition-fast); }
+.shortcut + .shortcut { border-top: 1px solid var(--color-surface-border); }
+.shortcut:hover { background: var(--color-brand-glow); }
+.shortcutIcon { display: flex; padding: .55rem; border-radius: var(--radius-sm); color: var(--color-brand); background: var(--color-brand-glow); }
+.shortcut strong { font-size: .72rem; font-weight: 600; display: block; }
+.shortcut small { display: block; font-size: .61rem; color: var(--color-text-muted); margin-top: .25rem; }
+.shortcut > svg { margin-left: auto; color: var(--color-text-muted); flex-shrink: 0; }
+@media (max-width: 800px) { .panels { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .metrics { grid-template-columns: 1fr; gap: .75rem; } .metric { position: relative; padding: 1.25rem 1.25rem 1.25rem 4.5rem; } .metricTop { position: absolute; top: 1.3rem; left: 1rem; width: auto; } .metricTop > svg { display: none; } .metricValue { font-size: 1.9rem; } }

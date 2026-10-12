@@ -1,0 +1,424 @@
+// Tipos derivados del esquema suministrado el 2026-10-09.
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[];
+export interface Rows {
+  agenda_events: {
+    id: string;
+    firm_id: string;
+    case_id: string | null;
+    titulo: string;
+    descripcion: string | null;
+    fecha_inicio: string;
+    fecha_fin: string;
+    tipo: Enums["agenda_event_type"];
+    estado: Enums["agenda_event_status"];
+    assigned_membership_id: string | null;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  audit_logs: {
+    id: string;
+    firm_id: string | null;
+    actor_user_id: string | null;
+    accion: Enums["audit_action"];
+    entidad: string;
+    entidad_id: string | null;
+    datos_anteriores: Json | null;
+    datos_nuevos: Json | null;
+    created_at: string;
+  };
+  case_expenses: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    concepto: string;
+    monto: number;
+    moneda: string;
+    fecha: string;
+    reembolsable: boolean;
+    estado: Enums["expense_status"];
+    comprobante_path: string | null;
+    observaciones: string | null;
+    creado_por: string | null;
+    aprobado_por: string | null;
+    aprobado_at: string | null;
+    reembolsado_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  case_members: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    membership_id: string;
+    role: Enums["case_member_role"];
+    asignado_por: string | null;
+    activo: boolean;
+    created_at: string;
+    updated_at: string;
+  };
+  case_notes: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    contenido: string;
+    visible_cliente: boolean;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  case_reports: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    periodo: string;
+    resumen_proceso: string | null;
+    estado_actual: string | null;
+    medidas_precautorias: string | null;
+    comentario: string | null;
+    visible_cliente: boolean;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  cases: {
+    id: string;
+    firm_id: string;
+    client_id: string;
+    numero_caso: string;
+    titulo: string;
+    descripcion: string | null;
+    estado: Enums["case_status"];
+    materia: string | null;
+    juzgado: string | null;
+    parte_contraria: string | null;
+    informe_despacho: string | null;
+    informe_cliente: string | null;
+    rol_cliente: string | null;
+    tipo_proceso: string | null;
+    nurej: string | null;
+    numero_fiscalia: string | null;
+    numero_felcc: string | null;
+    juez_actual: string | null;
+    secretario_actuario: string | null;
+    fiscal_actual: string | null;
+    investigador_asignado: string | null;
+    etapa_procesal: string | null;
+    cuantia: number | null;
+    archivado: boolean;
+    archivado_at: string | null;
+    archivado_por: string | null;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  clients: {
+    id: string;
+    firm_id: string;
+    tipo: Enums["client_type"];
+    nombres: string | null;
+    apellido_paterno: string | null;
+    apellido_materno: string | null;
+    ci: string | null;
+    expedido: string | null;
+    fecha_nacimiento: string | null;
+    nacionalidad: string | null;
+    estado_civil: string | null;
+    profesion: string | null;
+    nombre_empresa: string | null;
+    representante_legal: string | null;
+    email: string | null;
+    telefono: string | null;
+    telefono_laboral: string | null;
+    direccion: string | null;
+    direccion_oficina: string | null;
+    referido_por: string | null;
+    contacto_referidor: string | null;
+    etapa_comercial: string;
+    portal_user_id: string | null;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  compensation_rules: {
+    id: string;
+    firm_id: string;
+    scheme_id: string;
+    nombre: string;
+    recipient_type: Enums["compensation_recipient_type"];
+    membership_id: string | null;
+    recipient_label: string | null;
+    calculation_type: Enums["compensation_calculation_type"];
+    valor: number;
+    activo: boolean;
+    orden: number;
+    created_at: string;
+    updated_at: string;
+  };
+  compensation_schemes: {
+    id: string;
+    firm_id: string;
+    nombre: string;
+    descripcion: string | null;
+    activo: boolean;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  document_templates: {
+    id: string;
+    firm_id: string;
+    nombre: string;
+    descripcion: string | null;
+    tipo: string;
+    contenido: string;
+    creado_por: string;
+    creado_en: string;
+    actualizado_en: string;
+  };
+  documents: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    nombre_archivo: string;
+    mime_type: string | null;
+    extension: string | null;
+    tamano_bytes: number | null;
+    storage_path: string;
+    visible_cliente: boolean;
+    status: Enums["document_status"];
+    descripcion: string | null;
+    subido_por: string | null;
+    created_at: string;
+    updated_at: string;
+    archivado_at: string | null;
+    archivado_por: string | null;
+  };
+  fee_agreements: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    compensation_scheme_id: string | null;
+    numero_contrato: string | null;
+    monto_total: number;
+    moneda: string;
+    estado: Enums["fee_agreement_status"];
+    descripcion: string | null;
+    fecha_inicio: string;
+    fecha_fin: string | null;
+    autorizado_por: string | null;
+    autorizado_at: string | null;
+    creado_por: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  fee_installments: {
+    id: string;
+    firm_id: string;
+    agreement_id: string;
+    numero: number;
+    descripcion: string;
+    monto: number;
+    tipo_vencimiento: Enums["installment_due_type"];
+    fecha_vencimiento: string | null;
+    hito_vencimiento: string | null;
+    estado: Enums["installment_status"];
+    pagado_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  firm_invitations: {
+    id: string;
+    firm_id: string;
+    kind: Enums["invitation_kind"];
+    email: string;
+    role: Enums["firm_role"];
+    client_id: string | null;
+    invited_by: string;
+    status: Enums["invitation_status"];
+    expires_at: string;
+    accepted_by: string | null;
+    accepted_at: string | null;
+    revoked_by: string | null;
+    revoked_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  firm_member_details: {
+    id: string;
+    firm_id: string;
+    user_id: string;
+    cargo: string;
+    especialidad: string | null;
+    estado_laboral: string;
+    creado_en: string;
+    actualizado_en: string;
+  };
+  firm_memberships: {
+    id: string;
+    firm_id: string;
+    user_id: string;
+    role: Enums["firm_role"];
+    status: Enums["membership_status"];
+    invitado_por: string | null;
+    joined_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  firm_settings: {
+    id: string;
+    firm_id: string;
+    categoria: string;
+    valor: string;
+    activo: boolean;
+    creado_por: string | null;
+    creado_en: string;
+    actualizado_en: string;
+  };
+  firms: {
+    id: string;
+    nombre: string;
+    razon_social: string | null;
+    slug: string;
+    telefono: string | null;
+    email: string | null;
+    pais: string;
+    moneda_principal: string;
+    status: Enums["firm_status"];
+    trial_started_at: string;
+    trial_ends_at: string;
+    created_at: string;
+    updated_at: string;
+  };
+  payment_allocations: {
+    id: string;
+    firm_id: string;
+    payment_id: string;
+    installment_id: string;
+    monto: number;
+    created_at: string;
+  };
+  payment_distributions: {
+    id: string;
+    firm_id: string;
+    payment_id: string;
+    agreement_id: string;
+    scheme_id: string;
+    rule_id: string;
+    rule_name: string;
+    recipient_type: Enums["compensation_recipient_type"];
+    membership_id: string | null;
+    recipient_label: string | null;
+    calculation_type: Enums["compensation_calculation_type"];
+    rule_value: number;
+    base_calculo: number;
+    monto: number;
+    estado: Enums["distribution_status"];
+    liquidado_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  payments: {
+    id: string;
+    firm_id: string;
+    case_id: string;
+    monto: number;
+    moneda: string;
+    metodo: Enums["payment_method"];
+    estado: Enums["payment_status"];
+    fecha_pago: string;
+    referencia: string | null;
+    observaciones: string | null;
+    registrado_por: string | null;
+    anulado_por: string | null;
+    anulado_at: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  plans: {
+    id: string;
+    code: string;
+    nombre: string;
+    descripcion: string | null;
+    trial_days: number;
+    price_amount: number | null;
+    currency: string;
+    billing_interval: Enums["billing_interval"];
+    activo: boolean;
+    created_at: string;
+    updated_at: string;
+  };
+  profiles: {
+    id: string;
+    nombres: string | null;
+    apellido_paterno: string | null;
+    apellido_materno: string | null;
+    telefono: string | null;
+    avatar_url: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+  subscription_events: {
+    id: string;
+    firm_id: string;
+    subscription_id: string | null;
+    event_type: string;
+    previous_status: Enums["subscription_status"] | null;
+    new_status: Enums["subscription_status"] | null;
+    metadata: Json;
+    created_at: string;
+  };
+  subscriptions: {
+    id: string;
+    firm_id: string;
+    plan_id: string;
+    status: Enums["subscription_status"];
+    trial_start: string | null;
+    trial_end: string | null;
+    current_period_start: string | null;
+    current_period_end: string | null;
+    cancel_at_period_end: boolean;
+    canceled_at: string | null;
+    billing_provider: string | null;
+    provider_customer_id: string | null;
+    provider_subscription_id: string | null;
+    created_at: string;
+    updated_at: string;
+  };
+}
+export type FirmRole =
+  "admin" | "finanzas" | "asociado_senior" | "abogado" | "cliente";
+
+export interface Enums {
+  agenda_event_status: "pendiente" | "completado" | "cancelado";
+  agenda_event_type: "audiencia" | "reunion" | "vencimiento" | "tarea";
+  audit_action: "insert" | "update" | "delete";
+  billing_interval: "monthly" | "yearly";
+  case_member_role: "responsable" | "colaborador" | "supervisor";
+  case_status: "en_espera" | "mediacion" | "juicio" | "cerrado";
+  client_type: "persona" | "empresa";
+  compensation_calculation_type: "porcentaje" | "monto_fijo";
+  compensation_recipient_type: "firma" | "miembro" | "personalizado";
+  distribution_status: "pendiente" | "liquidado" | "anulado";
+  document_status: "activo" | "archivado";
+  expense_status: "registrado" | "aprobado" | "reembolsado" | "anulado";
+  fee_agreement_status: "borrador" | "vigente" | "finalizado" | "cancelado";
+  firm_role: "admin" | "finanzas" | "asociado_senior" | "abogado" | "cliente";
+  firm_status: "trial" | "active" | "past_due" | "suspended" | "cancelled";
+  installment_due_type: "fecha" | "hito";
+  installment_status: "pendiente" | "pagado" | "atrasado" | "cancelado";
+  invitation_kind: "staff" | "client_portal";
+  invitation_status: "pendiente" | "aceptada" | "revocada" | "expirada";
+  membership_status: "invitado" | "activo" | "suspendido";
+  payment_method:
+    "efectivo" | "transferencia" | "deposito" | "tarjeta" | "cheque" | "otro";
+  payment_status: "registrado" | "anulado";
+  subscription_status:
+    "trialing" | "active" | "past_due" | "expired" | "canceled";
+}

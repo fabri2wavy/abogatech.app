@@ -1,0 +1,62 @@
+.root {
+  --login-padding-block: clamp(var(--spacing-md), 2.5svh, var(--spacing-2xl));
+  --login-section-gap: clamp(var(--spacing-sm), 1.5svh, var(--spacing-lg));
+  --login-logo-width: clamp(7rem, 16svh, 10rem);
+  --login-hero-width: clamp(10rem, 27svh, 16.75rem);
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  background: var(--color-surface-card);
+}
+.showcase { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: var(--login-padding-block) clamp(var(--spacing-xl), 3.9vw, 5rem); color: var(--color-text-on-dark); background: radial-gradient(ellipse at 70% 65%, var(--color-navy-light), transparent 62%), var(--color-navy); }
+.showcase::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .035; background-image: linear-gradient(var(--color-silver) 1px, transparent 1px), linear-gradient(90deg, var(--color-silver) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(transparent, black); }
+.brandHeader { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md); position: relative; }
+.headerLogo { display: block; width: var(--login-logo-width); height: auto; aspect-ratio: 1.45; object-fit: cover; object-position: center 60%; }
+.edition { color: var(--color-navy-muted); font-size: .6rem; letter-spacing: .18em; border: 1px solid var(--color-navy-border); padding: .35rem .7rem; border-radius: var(--radius-full); }
+.story { margin: var(--login-section-gap) 0; position: relative; }
+.eyebrow { display: flex; align-items: center; gap: .6rem; color: var(--color-brand-light); font-size: .6rem; font-weight: 600; letter-spacing: .18em; }
+.eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.story h2 { margin: var(--login-section-gap) 0; font-size: clamp(1.75rem, min(3.4vw, 4.8svh), 3.5rem); font-weight: 600; line-height: 1.17; letter-spacing: -.055em; }
+.story h2 > span { color: var(--color-brand-light); }
+.story > p { font-size: .88rem; line-height: 1.8; color: var(--color-navy-muted); }
+.ecosystem { display: grid; gap: clamp(var(--spacing-md), 2.5svh, var(--spacing-xl)); position: relative; max-width: 520px; margin-top: clamp(var(--spacing-sm), 2svh, var(--spacing-xl)); margin-inline: auto; }
+.orbit { position: absolute; width: 88%; height: 60%; top: 0; left: 6%; border: 1px solid var(--color-navy-border); border-radius: 50%; transform: rotate(-18deg); pointer-events: none; }
+.orbit::after { content: ''; position: absolute; inset: -28px 28px; border: 1px solid var(--color-navy-border); border-radius: 50%; transform: rotate(45deg); }
+.logoPlate { position: relative; justify-self: center; width: min(100%, var(--login-hero-width)); transform: rotate(-5deg); border: 5px solid var(--color-navy-light); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+.heroLogo { width: 100%; height: auto; aspect-ratio: 1.25; object-fit: cover; display: block; }
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-sm); position: relative; }
+.feature { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(var(--spacing-sm), 1.2svh, .75rem); min-width: 0; padding: clamp(var(--spacing-sm), 1.4svh, .85rem) var(--spacing-md); background: var(--color-navy-mid); border: 1px solid var(--color-navy-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); font-size: .72rem; font-weight: 600; }
+.feature > svg { color: var(--color-brand-light); flex-shrink: 0; }
+.feature small { display: block; font-size: .58rem; font-weight: 400; color: var(--color-navy-muted); margin-top: .15rem; }
+.showcaseFooter { display: flex; align-items: center; gap: 1rem; color: var(--color-navy-muted); font-size: .52rem; letter-spacing: .1em; position: relative; }
+.footerLine { height: 1px; background: var(--color-navy-border); flex: 1; }
+.access { display: flex; flex-direction: column; justify-content: space-between; gap: var(--login-section-gap); padding: var(--login-padding-block) clamp(var(--spacing-xl), 5.2vw, 6rem); }
+.accessTop { display: flex; align-items: center; justify-content: flex-end; gap: .5rem; color: var(--color-text-muted); font-size: .6rem; font-weight: 500; letter-spacing: .12em; }
+.card { width: 100%; max-width: 400px; margin: auto; animation: fadeUp .5s ease both; }
+.welcome { font-size: .62rem; letter-spacing: .16em; font-weight: 700; color: var(--color-brand); }
+.card h1 { margin: var(--login-section-gap) 0; font-size: clamp(1.75rem, min(2.5vw, 4.5svh), 2.6rem); font-weight: 700; line-height: 1.22; letter-spacing: -.05em; text-wrap: balance; }
+.subtitle { font-size: .85rem; color: var(--color-text-secondary); line-height: 1.8; max-width: 360px; }
+.content { margin-top: clamp(var(--spacing-md), 2.5svh, var(--spacing-xl)); }
+.content > [role="alert"], .content > [role="status"] { margin-bottom: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); font-size: var(--text-xs); }
+.accessNote { display: flex; align-items: center; gap: .5rem; justify-content: center; color: var(--color-text-muted); margin-top: var(--login-section-gap); font-size: .63rem; }
+.accessNote svg { flex-shrink: 0; }
+.footer { display: flex; justify-content: space-between; gap: 1rem; font-size: .58rem; color: var(--color-text-muted); }
+.mobileBrand { display: none; }
+@media (min-width: 1600px) { .story { max-width: 650px; margin-inline: auto; width: 100%; } }
+@media (max-width: 1100px) { .edition { display: none; } .feature { padding-inline: var(--spacing-sm); } .access { padding-inline: var(--spacing-xl); } }
+@media (max-width: 760px) {
+  .root { display: block; }
+  .showcase { display: none; }
+  .access { min-height: 100svh; padding-inline: var(--spacing-lg); }
+  .mobileBrand { display: block; }
+  .accessTop { display: none; }
+  .card h1 { font-size: clamp(var(--text-2xl), 4.5svh, 2.2rem); }
+  .footer { padding-top: var(--spacing-sm); border-top: 1px solid var(--color-surface-border); }
+}
+@media (max-width: 760px) and (max-height: 600px) {
+  .root { --login-logo-width: 5rem; --login-padding-block: var(--spacing-xs); --login-section-gap: var(--spacing-xs); }
+  .card h1 { font-size: var(--text-2xl); }
+  .subtitle { line-height: 1.6; }
+  .content { margin-top: var(--spacing-sm); }
+  .content > [role="alert"], .content > [role="status"] { padding-block: var(--spacing-xs); line-height: 1.5; }
+}

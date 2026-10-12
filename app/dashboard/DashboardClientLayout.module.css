@@ -1,0 +1,42 @@
+.root { display: flex; height: 100dvh; background: var(--color-surface); }
+.sidebar { width: 260px; flex-shrink: 0; display: flex; flex-direction: column; background: var(--color-navy); border-right: 1px solid var(--color-navy-border); z-index: 50; }
+.sidebarBrand { display: flex; align-items: center; justify-content: space-between; padding: 1.75rem 1.35rem; }
+.workspaceLabel { display: flex; align-items: center; gap: .7rem; margin: 0 1rem 1.25rem; padding: .85rem .8rem; border: 1px solid var(--color-navy-border); border-radius: var(--radius-md); font-size: .72rem; font-weight: 500; color: var(--color-text-on-dark); background: var(--color-navy-mid); }
+.workspaceLabel small { display: block; color: var(--color-navy-muted); font-size: .63rem; margin-top: .15rem; }
+.workspaceIcon { padding: .5rem; border-radius: var(--radius-sm); background: var(--color-navy-card); color: var(--color-brand-light); }
+.nav { flex: 1; min-height: 0; overflow-y: auto; padding: 0 .9rem .75rem; }
+.sectionLabel { font-size: .53rem; font-weight: 600; letter-spacing: .16em; color: var(--color-navy-muted); padding: .75rem .8rem .55rem; }
+.navItem { display: flex; align-items: center; gap: .8rem; padding: .65rem .8rem; margin-bottom: .18rem; color: var(--color-navy-muted); border: 1px solid transparent; border-radius: var(--radius-sm); font-size: .76rem; font-weight: 500; transition: background var(--transition-fast), color var(--transition-fast); }
+.navItem:hover { color: var(--color-text-on-dark); background: var(--color-navy-card); }
+.active, .active:hover { color: var(--color-text-on-brand); background: var(--color-brand); border-color: var(--color-brand); box-shadow: var(--shadow-brand); }
+.activeDot { margin-left: auto; height: 5px; width: 5px; border-radius: 50%; background: currentColor; }
+.assistantCard { display: flex; align-items: center; gap: .6rem; margin: .5rem 1rem 1rem; padding: .85rem .75rem; border: 1px solid var(--color-navy-light); border-radius: var(--radius-md); color: var(--color-text-on-dark); background: var(--color-navy-card); font-size: .65rem; font-weight: 600; }
+.assistantCard small { display: block; color: var(--color-navy-muted); margin-top: .2rem; font-size: .58rem; font-weight: 400; }
+.assistantCard > svg { margin-left: auto; color: var(--color-navy-muted); }
+.assistantCard:hover { border-color: var(--color-brand-light); }
+.assistantIcon { color: var(--color-brand-light); }
+.sidebarFooter { padding: 1rem; border-top: 1px solid var(--color-navy-border); }
+.workspace { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.topbar { min-height: 73px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 2rem; background: var(--color-surface-card); border-bottom: 1px solid var(--color-surface-border); }
+.breadcrumb { display: flex; align-items: center; gap: .9rem; font-size: .75rem; font-weight: 500; }
+.breadcrumbBrand { color: var(--color-text-muted); }
+.roleBadge { display: flex; align-items: center; gap: .4rem; padding: .35rem .7rem; border: 1px solid var(--color-surface-border); border-radius: var(--radius-full); color: var(--color-text-secondary); font-size: .65rem; white-space: nowrap; }
+.roleBadge svg { color: var(--color-brand); }
+.content { flex: 1; min-height: 0; overflow-y: auto; padding: 2rem; scroll-behavior: smooth; }
+.contentInner { max-width: 1600px; margin-inline: auto; min-height: calc(100% - 4rem); }
+.contentFooter { max-width: 1600px; margin: 2.5rem auto 0; display: flex; gap: .75rem; color: var(--color-text-muted); font-size: .52rem; font-weight: 600; letter-spacing: .12em; }
+.contentFooter span { font-weight: 400; letter-spacing: 0; padding-left: .75rem; border-left: 1px solid var(--color-surface-border); }
+.menuButton, .closeMenu, .overlay { display: none; }
+.skipLink { position: fixed; top: .5rem; left: 1rem; transform: translateY(-200%); background: var(--color-surface-card); color: var(--color-brand); padding: .75rem 1rem; border-radius: var(--radius-sm); z-index: 100; }
+.skipLink:focus { transform: translateY(0); }
+@media (max-width: 1023px) {
+  .sidebar { position: fixed; inset: 0 auto 0 0; transform: translateX(-100%); visibility: hidden; transition: transform var(--transition-base), visibility var(--transition-base); width: min(290px, 88vw); }
+  .sidebar.open { transform: translateX(0); visibility: visible; }
+  .closeMenu, .menuButton { display: inline-flex; padding: .35rem; border-radius: var(--radius-sm); }
+  .closeMenu { color: var(--color-navy-muted); }
+  .overlay { display: block; position: fixed; inset: 0; z-index: 40; background: color-mix(in srgb, var(--color-navy) 65%, transparent); backdrop-filter: blur(3px); }
+  .topbar { padding: 1rem 1.25rem; min-height: 65px; }
+  .content { padding: 1.5rem; }
+}
+@media (max-width: 600px) { .breadcrumbBrand { display: none; } .breadcrumb { gap: .5rem; } .content { padding: 1rem; } .topbar { padding-inline: .75rem; } .roleBadge { font-size: .6rem; padding: .3rem .5rem; } }
+@media (max-height: 800px) and (min-width: 1024px) { .sidebarBrand { padding-block: 1.2rem; } .workspaceLabel { margin-bottom: .6rem; } .navItem { padding-block: .5rem; } .assistantCard { padding-block: .6rem; margin-bottom: .75rem; } .sidebarFooter { padding-block: .75rem; } }
