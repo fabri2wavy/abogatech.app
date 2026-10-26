@@ -1,7 +1,7 @@
-# Documento de Especificación de Requerimientos (SRS)
-## Proyecto: Abogatech — CRM Legal (Iturri & Asociados)
+# Documento de Abogatech
+## Proyecto: Abogatech
 
-**Versión:** 2.0 — Actualizada a partir del código fuente
+**Versión:** 1.1
 **Fecha:** Julio 2026
 **Desarrollador:** Ariel Fabricio Tarqui Villalba
 **Repositorio:** crm-legal-iturri
